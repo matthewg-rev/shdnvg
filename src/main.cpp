@@ -16,7 +16,7 @@ const int OLED_WIDTH = 1920;
 const int OLED_HEIGHT = 1080;
 
 int main() {
-    std::string command = "rpicam-vid -t 0 --framerate 60 --width " + std::to_string(OLED_WIDTH) + " --height " + std::to_string(OLED_HEIGHT) + " --awbgains 0.1,1,0.1 --denoise auto";
+    std::string command = "rpicam-vid --width 1920 --height 1080 --framerate 60 --shutter 16666 --gain 8 --denoise cdn_hq --awb auto --metering centre --ev 0.5 -t 0 ";
     system(command.c_str());
     return 0;
 }
