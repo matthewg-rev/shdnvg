@@ -33,11 +33,7 @@ public:
             cameraManager_->stop();
         }
     }
-
-    void capture() {
-        // Capture logic will go here
-    }
-}
+};
 
 int main() {
     
