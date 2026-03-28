@@ -11,8 +11,9 @@
 #include <memory>
 #include <chrono>
 #include <thread>
+#include <fstream>
 
-const const char* configFile = "config.txt";
+const char* configFile = "config.txt";
 
 int main() {
     // read width, height, framerate, shutter speed, gain, denoise level, awbgains, metering mode, ev from config file
