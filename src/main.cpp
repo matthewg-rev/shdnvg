@@ -36,6 +36,7 @@ public:
 };
 
 int main() {
+    IMX290Camera camera;
     
     return 0;
 }
