@@ -30,7 +30,7 @@ public:
 
     ~IMX290Camera() {
         if (cameraManager_) {
-            cameraManager_->reset();
+            cameraManager_->stop();
         }
     }
 
