@@ -20,7 +20,7 @@ private:
     std::unique_ptr<libcamera::CameraManager> cameraManager_;
     std::shared_ptr<libcamera::Camera> camera_;
 public:
-    IMX290Camera(std::string cameraId = "cam0") {
+    IMX290Camera() {
         cameraManager_ = std::make_unique<libcamera::CameraManager>();
         int result = cameraManager_->start();
         if (result != 0) {
@@ -28,21 +28,12 @@ public:
         }
 
         auto cameras = cameraManager_->cameras();
-
-        for (const auto& cam : cameras) {
-            std::cout << "found camera: " << cam->id() << std::endl;
-        }
-
         if (cameras.empty()) {
             throw std::runtime_error("no cameras found");
         }
 
-        camera_ = cameraManager_->get(cameraId);
-        if (!camera_) {
-            throw std::runtime_error("camera " + cameraId + " not found");
-        }
-
         // attempt to acquire the camera
+        camera_ = cameras[0]; // our hardware setup should only have one camera
         result = camera_->acquire();
         if (result != 0) {
             throw std::runtime_error("failed to acquire camera: " + std::to_string(result));
@@ -57,7 +48,7 @@ public:
 };
 
 int main() {
-    IMX290Camera camera("cam0");
+    IMX290Camera camera;
 
     return 0;
 }
