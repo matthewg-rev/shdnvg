@@ -38,7 +38,7 @@ public:
         }
 
         // attempt to acquire the camera
-        int result = camera_->acquire();
+        result = camera_->acquire();
         if (result != 0) {
             throw std::runtime_error("failed to acquire camera: " + std::to_string(result));
         }
