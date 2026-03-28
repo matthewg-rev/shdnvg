@@ -44,6 +44,11 @@ public:
         if (cameraManager_) {
             cameraManager_->stop();
         }
+
+        if (camera_) {
+            camera_->stop();
+            camera_->release();
+        }
     }
 };
 
