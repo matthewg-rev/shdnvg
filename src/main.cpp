@@ -28,6 +28,11 @@ public:
         }
 
         auto cameras = cameraManager_->cameras();
+
+        for (const auto& cam : cameras) {
+            std::cout << "found camera: " << cam->id() << std::endl;
+        }
+
         if (cameras.empty()) {
             throw std::runtime_error("no cameras found");
         }
