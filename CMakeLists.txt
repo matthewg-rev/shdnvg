@@ -7,12 +7,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(CAMERA REQUIRED libcamera)
 
-# dependencies for shdnvg
-find_library(LIBCAMERA_LIBRARY libcamera.so REQUIRED)
-find_library(LIBCAMERA_BASE_LIBRARY libcamera-base.so REQUIRED)
-message(STATUS ${LIBCAMERA_LIBRARY})
-message(STATUS ${LIBCAMERA_BASE_LIBRARY})
+add_executable(shdnvg src/main.cpp)
 
-add_executable(shdnvg
-    src/main.cpp
-)
+# Link against the libraries
+target_link_libraries(shdnvg ${CAMERA_LIBRARIES})
+target_include_directories(shdnvg PRIVATE ${CAMERA_INCLUDE_DIRS})

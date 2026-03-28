@@ -1,0 +1,1 @@
+Follow initial camera configuration instructions of IMX290 for new systems on here: https://www.waveshare.com/wiki/IMX290-83_IR-CUT_Camera
