@@ -12,11 +12,23 @@
 #include <chrono>
 #include <thread>
 
-const int OLED_WIDTH = 1920;
-const int OLED_HEIGHT = 1080;
+const const char* configFile = "config.txt";
 
 int main() {
-    std::string command = "rpicam-vid --width 1920 --height 1080 --framerate 60 --shutter 16666 --gain 8 --denoise cdn_hq --awbgains 0.1,1,0.1--metering centre --ev 0.5 -t 0 ";
+    // read width, height, framerate, shutter speed, gain, denoise level, awbgains, metering mode, ev from config file
+    int width, height, framerate, shutter, gain;
+    std::string denoise, awbgains, metering;
+    double ev;
+    std::ifstream config(configFile);
+    if (config.is_open()) {
+        config >> width >> height >> framerate >> shutter >> gain >> denoise >> awbgains >> metering >> ev;
+        config.close();
+    } else {
+        std::cerr << "Unable to open config file" << std::endl;
+        return 1;
+    }
+
+    std::string command = "rpicam-vid --width " + std::to_string(width) + " --height " + std::to_string(height) + " --framerate " + std::to_string(framerate) + " --shutter " + std::to_string(shutter) + " --gain " + std::to_string(gain) + " --denoise " + denoise + " --awbgains " + awbgains + " --metering " + metering + " --ev " + std::to_string(ev) + " -t 0 ";
     system(command.c_str());
     return 0;
 }
