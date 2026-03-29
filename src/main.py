@@ -12,8 +12,8 @@ picam2.set_controls({
     "Denoise": "night",
     "ExposureTime": 16000,
     'AeEnable': True,
-    'AeExposureMode': controls.AeExposureModeEnum.Normal,
-    'AeConstraintMode': controls.AeConstraintModeEnum.Highlight
+    'AeExposureMode': libcamera.controls.AeExposureModeEnum.Normal,
+    'AeConstraintMode': libcamera.controls.AeConstraintModeEnum.Highlight
 })
 time.sleep(1)
 
