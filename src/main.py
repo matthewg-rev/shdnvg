@@ -1,3 +1,4 @@
+import libcamera
 from picamera2 import Picamera2, Preview, controls
 import time
 
@@ -14,6 +15,7 @@ picam2.set_controls({
     'AeExposureMode': controls.AeExposureModeEnum.Normal,
     'AeConstraintMode': controls.AeConstraintModeEnum.Highlight
 })
+time.sleep(1)
 
 stopped_gracefully = False
 try:
