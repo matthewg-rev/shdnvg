@@ -1,5 +1,5 @@
 import libcamera
-from picamera2 import Picamera2, Preview, controls
+from picamera2 import Picamera2, Preview, controls, draft
 import time
 
 picam2 = Picamera2()
@@ -9,11 +9,11 @@ picam2.configure(camera_config)
 picam2.start_preview()
 time.sleep(2)
 picam2.set_controls({
-    "Denoise": "night",
     "ExposureTime": 16000,
     'AeEnable': True,
     'AeExposureMode': libcamera.controls.AeExposureModeEnum.Normal,
-    'AeConstraintMode': libcamera.controls.AeConstraintModeEnum.Highlight
+    'AeConstraintMode': libcamera.controls.AeConstraintModeEnum.Highlight,
+    'NoiseReductionMode': libcamera.draft.NoiseReductionModeEnum.HighQuality
 })
 time.sleep(1)
 
