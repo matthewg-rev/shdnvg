@@ -13,7 +13,7 @@ picam2.set_controls({
     'AeEnable': True,
     'AeExposureMode': libcamera.controls.AeExposureModeEnum.Normal,
     'AeConstraintMode': libcamera.controls.AeConstraintModeEnum.Highlight,
-    'NoiseReductionMode': libcamera.draft.NoiseReductionModeEnum.HighQuality
+    'NoiseReductionMode': libcamera.controls.draft.NoiseReductionModeEnum.HighQuality
 })
 time.sleep(1)
 
